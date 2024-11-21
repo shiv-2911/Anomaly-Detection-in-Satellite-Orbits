@@ -1,27 +1,38 @@
-# Anomaly-Detection-in-Satellite-Orbits
-## CryoSat-2, Haiyang-2A, Jason-3, Sentinel-6A, SARAL Orbit Data Analysis
+# Anomaly Detection in Satellite Orbits
+## Orbit Data Analysis Using ARIMA, VARIMA, XGBoost, and CatBoost
 
-This code analyzes the orbital data of multiple satellites: CryoSat-2, Haiyang-2A, Jason-3, Sentinel-6A, and SARAL. It performs various tasks including data import, formatting, exploratory data analysis (EDA), stationarity testing, ARIMA model fitting, and residual analysis.
+This repository implements anomaly detection in satellite orbits using advanced time-series modeling and machine learning techniques. The project leverages ARIMA, VARIMA, XGBoost, and CatBoost models to analyze satellite Two-Line Element (TLE) data and detect deviations caused by maneuvers.
 
 ### Key Functionalities:
-* Imports unpropagated element data (CSV format) for each satellite.
-* Extracts manoeuvre start and end dates from a separate .txt file.
-* Formats column names for consistency.
-* Checks for duplicate data entries.
-* Calculates and displays the percentage of missing values in the dataset.
-* Generates ACF (autocorrelation function) and PACF (partial autocorrelation function) plots to assess time series stationarity.
-* Performs Augmented Dickey-Fuller (ADF) test to statistically determine stationarity.
-* Conducts exploratory data analysis (EDA) including:
-    * Basic information about the dataset (data types, summary statistics)
-    * Time series plots for each orbital element
-    * Overlaying manoeuvre start dates on the time series plots for visual reference
-* Fits an ARIMA model to each orbital element time series to forecast future values.
-* Evaluates different ARIMA parameter combinations (p, d, q) using Mean Squared Error (MSE) to find the best-fitting model.
-* Plots the residuals of the best ARIMA model with manoeuvre start dates overlaid.
+* **Data Handling:**
+  - Imports and preprocesses TLE data for various satellites.
+  - Handles missing or duplicate entries, ensuring data consistency.
+* **Exploratory Data Analysis (EDA):**
+  - Generates visualizations and statistical summaries of orbital elements.
+  - Produces time-series plots with maneuver indicators for intuitive analysis.
+* **Anomaly Detection:**
+  - Implements ARIMA models to forecast orbital elements and detect anomalies through residual analysis.
+  - Utilizes VARIMA (Vector AutoRegressive Integrated Moving Average) for multivariate time-series analysis.
+  - Applies XGBoost and CatBoost models for machine-learning-based anomaly detection.
+* **Model Optimization:**
+  - Tunes ARIMA and VARIMA parameters (p, d, q) for optimal time-series forecasting.
+  - Optimizes XGBoost and CatBoost hyperparameters using grid search or random search.
+  - Evaluates model performance using metrics like Mean Squared Error (MSE), precision, and recall.
+* **Advanced Features:**
+  - Identifies and visualizes anomalies with maneuver overlays on time-series plots.
+  - Provides detailed comparison of model performance across various techniques.
+  - Quantitatively measures the performance of the model using matching techniques to find maneuvers.
 
 ### Data Source:
-* The script assumes the data files (CSV and txt) are located in the same directory as the script.
-* Update file paths in the read_satellite_data and extract_start_end_dates function calls to point to your specific data source.
+- The script processes TLE data files and maneuver records. Ensure these files are placed in the appropriate directory or update paths in the script accordingly.
 
-### Running the Code:
-Ensure you have Python 3 and the required libraries (pandas, numpy, matplotlib, seaborn, statsmodels) installed.
+### Requirements:
+- **Python 3.x** and the following libraries:
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
+  - statsmodels
+  - xgboost
+  - catboost
+  - scikit-learn
